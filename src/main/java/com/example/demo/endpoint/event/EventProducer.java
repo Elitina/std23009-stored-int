@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,7 @@ import software.amazon.awssdk.services.eventbridge.model.PutEventsResultEntry;
 @PojaGenerated
 @Component
 @Slf4j
+@ConditionalOnProperty(name = "aws.eventBridge.enabled", havingValue = "true", matchIfMissing = false)
 public class EventProducer<T extends PojaEvent> implements Consumer<Collection<T>> {
   private final ObjectMapper om;
   private final EventBridgeClient eventBridgeClient;
