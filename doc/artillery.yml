@@ -1,12 +1,11 @@
 config:
   target: "https://3g7hh4n6gvmiyf5kfss2mh4u6q0amtgx.lambda-url.eu-west-3.on.aws"
   phases:
-    - duration: 60
-      arrivalRate: 50
+    - duration: 10
+      arrivalRate: 5
 scenarios:
-  - flow:
+  - name: "Test Lambda"
+    requests:
       - get:
           url: "/stored-int"
-
-
 
